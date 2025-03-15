@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Finance Dashboard - Per Diem System</title>
+    <link rel="stylesheet" href="/frontend/style.css" />
+    <script src="/frontend/script.js" defer></script>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Finance Dashboard</h2>
+      <p><a href="/backend/auth.php?logout=true">Logout</a></p>
+      <h3>Generate Report</h3>
+      <form
+        id="report_form"
+        onsubmit="event.preventDefault(); generateReport();"
+      >
+        <input type="date" id="report_start" required />
+        <input type="date" id="report_end" required />
+        <button type="submit">Generate Report</button>
+      </form>
+      <table id="report_table"></table>
+    </div>
+  </body>
+</html>
