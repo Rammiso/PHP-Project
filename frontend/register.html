@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register - Per Diem System</title>
+    <link rel="stylesheet" href="/frontend/style.css" />
+    <script src="/frontend/script.js" defer></script>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Register</h2>
+      <form id="register_form" action="/backend/auth.php" method="POST">
+        <input type="text" name="username" placeholder="Username" required />
+        <input
+          type="password"
+          name="password"
+          placeholder="Password"
+          required
+        />
+        <select name="role" required>
+          <option value="employee">Employee</option>
+          <option value="manager">Manager</option>
+          <option value="finance">Finance</option>
+        </select>
+        <input type="email" name="email" placeholder="Email" required />
+        <button type="submit" name="register">Register</button>
+      </form>
+      <p>
+        Already have an account? <a href="/frontend/login.html">Login here</a>
+      </p>
+    </div>
+    <script>
+      submitForm("register_form", "/backend/auth.php", (data) => {
+        if (data.includes("failed")) {
+          alert("Registration failed!");
+        } else {
+          window.location.href = data;
+        }
+      });
+    </script>
+  </body>
+</html>

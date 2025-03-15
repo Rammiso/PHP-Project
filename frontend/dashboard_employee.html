@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Employee Dashboard - Per Diem System</title>
+    <link rel="stylesheet" href="/frontend/style.css" />
+    <script src="/frontend/script.js" defer></script>
+  </head>
+  <body
+    onload="loadRequests('employee', 'employee_requests', '/backend/request_controller.php')"
+  >
+    <div class="container">
+      <h2>Employee Dashboard</h2>
+      <p><a href="/backend/auth.php?logout=true">Logout</a></p>
+      <h3>Submit Per Diem Request</h3>
+      <form
+        id="request_form"
+        action="/backend/request_controller.php"
+        method="POST"
+      >
+        <input
+          type="text"
+          name="destination"
+          placeholder="Destination"
+          required
+        />
+        <input type="date" name="start_date" required />
+        <input type="date" name="end_date" required />
+        <button type="submit" name="submit_request">Submit Request</button>
+      </form>
+      <h3>Your Requests</h3>
+      <table id="employee_requests"></table>
+    </div>
+    <script>
+      submitForm("request_form", "/backend/request_controller.php", (data) => {
+        alert(data);
+        loadRequests(
+          "employee",
+          "employee_requests",
+          "/backend/request_controller.php"
+        );
+      });
+    </script>
+  </body>
+</html>

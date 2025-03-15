@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manager Dashboard - Per Diem System</title>
+    <link rel="stylesheet" href="/frontend/style.css" />
+    <script src="/frontend/script.js" defer></script>
+  </head>
+  <body
+    onload="loadRequests('manager', 'manager_requests', '/backend/request_controller.php')"
+  >
+    <div class="container">
+      <h2>Manager Dashboard</h2>
+      <p><a href="/backend/auth.php?logout=true">Logout</a></p>
+      <h3>Pending Requests</h3>
+      <table id="manager_requests"></table>
+    </div>
+  </body>
+</html>

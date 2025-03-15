@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - Per Diem System</title>
+    <link rel="stylesheet" href="/frontend/style.css" />
+    <script src="/frontend/script.js" defer></script>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Login</h2>
+      <form id="login_form" action="/backend/auth.php" method="POST">
+        <input type="text" name="username" placeholder="Username" required />
+        <input
+          type="password"
+          name="password"
+          placeholder="Password"
+          required
+        />
+        <button type="submit" name="login">Login</button>
+      </form>
+      <p>Not registered? <a href="/frontend/register.html">Register here</a></p>
+    </div>
+    <script>
+      submitForm("login_form", "/backend/auth.php", (data) => {
+        if (data.includes("failed")) {
+          alert("Login failed!");
+        } else {
+          window.location.href = data; // Redirect based on backend response
+        }
+      });
+    </script>
+  </body>
+</html>
